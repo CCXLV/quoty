@@ -1,0 +1,17 @@
+{% extends 'layout/layout.html' %}
+{% block title %}Write Your Thoughts{% endblock %}
+
+{% block body %}
+
+    <h1 id="title">Write your thoughts</h1>
+    <div class="post">
+        <form action="" method="post">
+            <h3 id="nickname">Enter your nickname</h3>
+            <input type="text" name="nickname" placeholder="Nickname for the post" required id="inp-nickname">
+            <p id="question">What is the happiest memory in your life?</p>
+            <textarea name="post-content" id="post" required></textarea>
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}
