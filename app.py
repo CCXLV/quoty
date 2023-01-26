@@ -3,9 +3,9 @@ from flask import Flask, render_template, redirect, request, url_for, session
 
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = ''
+app.config['SECRET_KEY'] = 'secret_key'
 
-db =  SQL("")
+db =  SQL("postgresql://postgres@localhost/test")
 
 
 @app.route('/', methods=['GET', 'POST'])
