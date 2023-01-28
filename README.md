@@ -1,1 +1,1 @@
-# Website where people can share their thoughts to other people
+# Website where people can share their favorite qutoes.
