@@ -27,12 +27,7 @@ def home():
             'content': post_content,
             'created_at': datetime.now()
         }
-        for word in FORBIDDEN_WORDS:
-            message = 'It is highly forbidden using nsfw words!'
-            if word in post_content or nickname:
-                return render_template('error.html', error=message)
-            elif word not in post_content:
-                db_posts.insert_one(query)
+        db_posts.insert_one(query)
 
     
     return render_template('index.html')
