@@ -7,6 +7,11 @@
 }
 body{
     background-color: var(--background-color);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+a{
+    text-decoration: none;
 }
 #title{
     text-align: center;
@@ -14,7 +19,7 @@ body{
     font-size: 30px;
     top: 30px;
     position: relative;
-    color: var(--title-color)
+    color: var(--title-color);
 }
 .post{
     width: 900px;
@@ -167,5 +172,60 @@ body{
     #submit-button{
         left: 22px;
         top: 350px;
+    }
+}
+
+.post-div{
+    display: block;
+    width: 702px;
+    height: auto;
+    left: 0;
+    right: 0;
+    position: relative;
+    margin: 80px auto;
+}
+.post-content{
+    width: 670px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    position: relative;
+}
+#date{
+    font-size: 13px;
+}
+::-webkit-scrollbar {
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 8px;
+}
+  
+  
+@media (max-width: 700px){
+    body{
+        overflow-y: scroll;
+    }
+    .post-div{
+        width: 650px;
+        padding: 0 15px 15px;
+    }
+    .post-content{
+        width: 600px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        position: relative;
+    }
+}
+@media (max-width: 578px){
+    .post-div{
+        width: 560px;
+        padding: 0 18px 18px;
+    }
+    .post-content{
+        width: 450px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        position: relative;
     }
 }
