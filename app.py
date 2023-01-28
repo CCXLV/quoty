@@ -20,8 +20,6 @@ def home():
         post_content = request.form.get('post-content')
         session['nickname'] = nickname
         session['post-content'] = post_content
-        session['question'] = request.form.get('#question')
-        print(session['question'])
 
         query = {
             'nickname': nickname,
