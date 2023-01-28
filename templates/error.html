@@ -1,0 +1,14 @@
+{% extends 'layout/layout.html' %}
+{% block title %}Error{% endblock %}
+
+{% block body %}
+
+    <div class="error-div-content">
+        <img src="/static/images/exclamation mark.png" id="exl-mark">
+        <p id="error-message">{{ error }}</p>
+        <a href="/">
+            <button id="home-page-button">Home page</button>
+        </a>
+    </div>
+
+{% endblock %}
