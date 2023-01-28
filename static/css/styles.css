@@ -212,7 +212,6 @@ a{
     }
     .post-content{
         width: 600px;
-        font-family: 'Poppins', sans-serif;
         font-size: 16px;
         position: relative;
     }
@@ -224,8 +223,41 @@ a{
     }
     .post-content{
         width: 450px;
-        font-family: 'Poppins', sans-serif;
         font-size: 16px;
         position: relative;
+    }
+}
+.error-div-content{
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: 320px auto;
+}
+#error-message{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+}
+#exl-mark{
+    width: 20%;
+    height: 20%;
+}
+#home-page-button{
+    margin-top: 4px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 6px;
+    color: aliceblue;
+    background-color: var(--main-color);
+}
+@media (max-width: 700px){
+    .error-div-content{
+        margin: 240px auto;
     }
 }
