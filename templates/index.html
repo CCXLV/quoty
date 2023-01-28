@@ -1,14 +1,16 @@
 {% extends 'layout/layout.html' %}
-{% block title %}Write Your Thoughts{% endblock %}
+{% block title %}What is your favorite quote?{% endblock %}
 
 {% block body %}
 
-    <h1 id="title">Write your thoughts</h1>
+    <a href="/posts">
+        <h1 id="title">Quotes</h1>
+    </a>
     <div class="post">
         <form action="" method="post">
-            <h3 id="nickname">Enter your nickname</h3>
-            <input type="text" name="nickname" placeholder="Nickname for the post" required id="inp-nickname">
-            <p id="question">What is the happiest memory in your life?</p>
+            <h3 id="nickname">Enter quote author</h3>
+            <input type="text" name="nickname" placeholder="Author name" required id="inp-nickname">
+            <p id="question">What is your favorite quote?</p>
             <textarea name="post-content" id="post" required></textarea>
             <button type="submit" id="submit-button">Submit</button>
         </form>
