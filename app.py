@@ -23,24 +23,19 @@ def home():
         session['question'] = request.form.get('#question')
         print(session['question'])
 
-
         query = {
             'nickname': nickname,
             'content': post_content,
             'created_at': datetime.now()
         }
         db_posts.insert_one(query)
-       
-
-
-
+      
     return render_template('index.html')
 
 
 @app.route('/posts', methods=['GET', 'POST'])
 def posts():
     _posts = db_posts.find()
-
 
     return render_template('posts.html', posts=_posts)
 
