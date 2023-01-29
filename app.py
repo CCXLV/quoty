@@ -78,7 +78,7 @@ def verify_passcode():
     else:
         return render_template('error.html', error=message)
 
-@app.route('/admin/room', methods=['GET', 'POST'])
+@app.route('/admin/room', methods=['POST'])
 def admin_room():
     _posts = db_posts.find()
 
