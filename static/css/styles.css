@@ -13,6 +13,12 @@ body{
 a{
     text-decoration: none;
 }
+input{
+    outline: none;
+}
+button{
+    cursor: pointer;
+}
 #title{
     text-align: center;
     font-family: 'Poppins', sans-serif;
@@ -260,4 +266,16 @@ a{
     .error-div-content{
         margin: 240px auto;
     }
+}
+.admin-div{
+    text-align: center;
+    width: 400px;
+    height: 400px;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: 220px auto;
+}
+#admin-input{
+    padding: 4px 4px;
 }
