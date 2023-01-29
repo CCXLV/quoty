@@ -6,8 +6,8 @@
     <div class="post-div">
         {% for post in posts %}
             <div class="post-content">
-                <p id="author">Author: {{ post.nickname }}</p>
-                <p id="content">- {{ post.content }}</p>
+                <p>Author: {{ post.nickname }}</p>
+                <p>- {{ post.content }}</p>
                 <p id="date">{{ post['created_at'].strftime('%B %d, %Y %I:%M %p') }}</p>
                 <button class="delete-button" data-id="{{ post._id }}">Delete</button>
                 <hr>
