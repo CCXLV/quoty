@@ -62,37 +62,5 @@ def api_quotes():
 
 
 
-
-@app.route('/admin', methods=['GET', 'POST'])
-def admin():
-
-    return render_template('admin.html')
-
-
-@app.route('/admin/verify-passcode', methods=['POST'])
-def verify_passcode():
-    message = 'Acces denied!'
-    passcode = request.form.get('passcode')
-    if passcode == '':
-        return redirect('/admin/room')
-    else:
-        return render_template('error.html', error=message)
-
-@app.route('/admin/room', methods=['POST'])
-def admin_room():
-    _posts = db_posts.find()
-
-    return render_template('admin_room.html', posts=_posts)
-
-
-@app.route('/quotes/delete', methods=['DELETE'])
-def post_delete():
-    _id = request.args.get('_id')
-    try:
-        db_posts.delete_one({"_id": ObjectId(_id)})
-        return jsonify({"status": "success"})
-    except:
-        return jsonify({"status": "error"})
-
 if __name__ == '__main__':
     app.run(debug=True)
