@@ -1,3 +1,3 @@
-# Website where people can share their favorite qutoes.
+# Website where people can share their favorite quotes.
 
 # https://apu.icu
