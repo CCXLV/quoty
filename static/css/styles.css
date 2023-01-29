@@ -185,7 +185,7 @@ button{
         width: 400px;
     }
     #post{
-        margin: 290px auto;
+        margin: 280px auto;
         width: 370px;
     }
     #nickname{
@@ -203,11 +203,11 @@ button{
     }
     #question{
         left: 12px;
-        top: 10px;
+        top: 0px;
     }
     #submit-button{
         left: 12px;
-        top: 350px;
+        top: 340px;
     }
 }
 @media (max-width: 400px){
@@ -215,8 +215,8 @@ button{
         width: 380px;
     }
     #post{
-        margin: 290px auto;
-        width: 345px;
+        margin: 280px auto;
+        width: 348px;
     }
 }
 @media (max-width: 370px){
@@ -224,7 +224,7 @@ button{
         width: 360px;
     }
     #post{
-        margin: 290px auto;
+        margin: 280px auto;
         margin-left: 12px;
         margin-right: 12px;
         width: auto;
