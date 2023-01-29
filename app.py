@@ -6,10 +6,9 @@ from bson.objectid import ObjectId
 from utils.forbidden_words import FORBIDDEN_WORDS
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = ''
-app.config['WTF_CSRF_ENABLED'] = True
+app.config['SECRET_KEY'] = 'secret_key'
 
-client = MongoClient('')
+client = MongoClient('mongodb+srv://<username>:<password>@cluster0.witq744.mongodb.net/?retryWrites=true&w=majority')
 
 db = client['ts']
 db_posts = db['posts']
