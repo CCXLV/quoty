@@ -180,6 +180,36 @@ button{
         top: 350px;
     }
 }
+@media (max-width: 420px){
+    .post{
+        width: 400px;
+    }
+    #post{
+        margin: 290px auto;
+        width: 370px;
+    }
+    #nickname{
+        top: -30px;
+    }
+    #title{
+        font-size: 28px;
+    }
+    #nickname{
+        font-size: 20px;
+    }
+    #inp-nickname{
+        left: 95px;
+        top: -30px;
+    }
+    #question{
+        left: 12px;
+        top: 10px;
+    }
+    #submit-button{
+        left: 12px;
+        top: 350px;
+    }
+}
 
 .post-div{
     display: block;
@@ -229,6 +259,20 @@ button{
     }
     .post-content{
         width: 450px;
+        font-size: 16px;
+        position: relative;
+    }
+}
+@media (max-width: 420px){
+    body{
+        overflow-x: hidden;
+    }
+    .post-div{
+        width: 395px;
+        padding: 0 8px 8px;
+    }
+    .post-content{
+        width: 390px;
         font-size: 16px;
         position: relative;
     }
