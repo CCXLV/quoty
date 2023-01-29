@@ -180,13 +180,13 @@ button{
         top: 350px;
     }
 }
-@media (max-width: 420px){
+@media (max-width: 450px){
     .post{
         width: 400px;
     }
     #post{
-        margin: 260px auto;
-        width: 366px;
+        margin: 290px auto;
+        width: 370px;
     }
     #nickname{
         top: -30px;
@@ -210,6 +210,27 @@ button{
         top: 350px;
     }
 }
+@media (max-width: 400px){
+    .post{
+        width: 380px;
+    }
+    #post{
+        margin: 290px auto;
+        width: 345px;
+    }
+}
+@media (max-width: 370px){
+    .post{
+        width: 360px;
+    }
+    #post{
+        margin: 290px auto;
+        margin-left: 12px;
+        margin-right: 12px;
+        width: auto;
+    }
+}
+
 
 .post-div{
     display: block;
