@@ -1,2 +1,2 @@
 ## Note 
-Be aware in `forbidden_words.py` there are some harmful words.
+Be aware that there are some harmful words in `forbidden_words.py`.
