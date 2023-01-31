@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 
 from utils.forbidden_words import FORBIDDEN_WORDS
 
+load_dotenv('secrets.env')
+
 SECRET_KEY = os.getenv("SECRET_KEY")
 DATABASE_URL = os.getenv("MONGODB_URL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
