@@ -18,8 +18,8 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 client = MongoClient(DATABASE_URL)
 
-db = client['ts']
-db_posts = db['posts']
+db = client['database']
+db_posts = db['db_table']
 
 
 @app.route('/', methods=['GET', 'POST'])
