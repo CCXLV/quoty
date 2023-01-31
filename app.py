@@ -3,12 +3,18 @@ from flask import Flask, render_template, request, session, jsonify, redirect, u
 from datetime import datetime
 from bson.objectid import ObjectId
 
+from dotenv import load_dotenv
+
 from utils.forbidden_words import FORBIDDEN_WORDS
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = 'secret_key'
+SECRET_KEY = os.getenv("SECRET_KEY")
+DATABASE_URL = os.getenv("MONGODB_URL")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
-client = MongoClient('database')
+app = Flask(__name__, template_folder='templates', static_folder='static')
+app.config['SECRET_KEY'] = SECRET_KEY
+
+client = MongoClient(DATABASE_URL)
 
 db = client['ts']
 db_posts = db['posts']
@@ -70,7 +76,7 @@ def admin():
 def verify_passcode():
     message = 'Acces denied!'
     passcode = request.form.get('passcode')
-    if passcode == 'passcode':
+    if passcode == ADMIN_PASSWORD:
         return redirect('/admin/room/IC12S8AfOfPLmaX8rSso7pL6')
     else:
         return render_template('error.html', error=message)
