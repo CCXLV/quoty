@@ -1,3 +1,4 @@
 flask==2.2.2
-pymongo==4.3.3
 python-dotenv==0.21.1
+cs50==9.2.5
+mysqlclient==2.1.1
