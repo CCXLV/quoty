@@ -8,7 +8,7 @@
             <div class="post-content">
                 <p>Author: {{ post.nickname }}</p>
                 <p>- {{ post.content }}</p>
-                <p id="date">{{ post['created_at'].strftime('%B %d, %Y %I:%M %p') }}</p>
+                <p id="date">{{ post.upload_date.strftime('%B %d, %Y %I:%M %p') }}</p>
                 <button class="delete-button" data-id="{{ post._id }}">Delete</button>
                 <hr>
             </div>
