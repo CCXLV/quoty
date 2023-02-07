@@ -18,7 +18,6 @@ app.config['SECRET_KEY'] = SECRET_KEY
 db = SQL(DATABASE_URL)
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
