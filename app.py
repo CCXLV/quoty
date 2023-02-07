@@ -1,7 +1,6 @@
-from pymongo import MongoClient
+from cs50 import SQL
 from flask import Flask, render_template, request, session, jsonify, redirect, url_for
 from datetime import datetime
-from bson.objectid import ObjectId
 
 from dotenv import load_dotenv
 
@@ -10,16 +9,14 @@ from utils.forbidden_words import FORBIDDEN_WORDS
 load_dotenv('secrets.env')
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-DATABASE_URL = os.getenv("MONGODB_URL")
+DATABASE_URL = os.getenv("MySQL_URL")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = SECRET_KEY
 
-client = MongoClient(DATABASE_URL)
+db = SQL(DATABASE_URL)
 
-db = client['database']
-db_posts = db['db_table']
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -30,11 +27,6 @@ def home():
         session['nickname'] = nickname
         session['post-content'] = post_content
 
-        query = {
-            'nickname': nickname,
-            'content': post_content,
-            'created_at': datetime.now()
-        }
         error_message = 'It is highly forbidden using nsfw words!'
         found = False
         for word in FORBIDDEN_WORDS:
@@ -44,7 +36,10 @@ def home():
         if found:
             return render_template('error.html', error=error_message)
         else:
-            db_posts.insert_one(query)
+            query_ = (
+                'INSERT INTO posts (author, content, upload_date) VALUES (?, ?, ?)'
+            )
+            db.execute(query_, author, post_content, datetime.now())
         
 
     
@@ -53,20 +48,19 @@ def home():
 
 @app.route('/quotes', methods=['GET', 'POST'])
 def posts():
-    _posts = db_posts.find()
+    result = db.execute('SELECT * FROM posts')
+    results = []
+    for i in result:
+        results.append(i)
 
-    return render_template('posts.html', posts=_posts)
-
-
+    return render_template('posts.html', posts=results)
 
 
 @app.route('/api/quotes', methods=['GET', 'POST'])
 def api_quotes():
-    all_posts = list(db_posts.find())
-    for post in all_posts:
-        post['_id'] = str(post['_id'])
+    result = db.execute('SELECT * FROM posts')
 
-    return jsonify(all_posts)
+    return jsonify(result)
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -85,16 +79,19 @@ def verify_passcode():
 
 @app.route('/admin/room/IC12S8AfOfPLmaX8rSso7pL6', methods=['POST'])
 def admin_room():
-    _posts = db_posts.find()
+    result = db.execute('SELECT * FROM posts')
+    results = []
+    for i in result:
+        results.append(i)
 
-    return render_template('admin_room.html', posts=_posts)
+    return render_template('admin_room.html', posts=results)
 
 
 @app.route('/quotes/delete', methods=['DELETE'])
 def post_delete():
-    _id = request.args.get('_id')
+    id = request.args.get('_id')
     try:
-        db_posts.delete_one({"_id": ObjectId(_id)})
+        db.execute('DELETE FROM posts WHERE id = ?', id)
         return jsonify({"status": "success"})
     except:
         return jsonify({"status": "error"})
