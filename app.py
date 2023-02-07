@@ -15,7 +15,7 @@ ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = SECRET_KEY
 
-db = SQL(DATABASE_URL)
+db = SQL(DATABASE_URL) # Format 'mysql://root@localhost/test'
 
 
 @app.route('/', methods=['GET', 'POST'])
