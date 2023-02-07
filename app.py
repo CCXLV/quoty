@@ -61,6 +61,7 @@ def api_quotes():
 
     return jsonify(result)
 
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
 
@@ -76,6 +77,7 @@ def verify_passcode():
     else:
         return render_template('error.html', error=message)
 
+    
 @app.route('/admin/room/IC12S8AfOfPLmaX8rSso7pL6', methods=['POST'])
 def admin_room():
     result = db.execute('SELECT * FROM posts')
