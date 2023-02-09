@@ -7,6 +7,6 @@ FORBIDDEN_WORDS = [
     'MUTELI', 'მუტელი', 'ბოზი', 
     'porn', 'PORN', 'YLEO', 'yleo',
     'ყლეო', 'motynuli', 'MOTYNULI',
-    'მოტყნული'
+    'მოტყნული', 'bitch'
 ]
 
