@@ -130,7 +130,7 @@ def admin():
 @app.route('/admin/verify-passcode', methods=['POST'])
 def verify_passcode():
     message = 'Acces denied!'
-    passcode = request.json.get('passcode')
+    passcode = request.form.get('passcode')
     if passcode == config.ADMIN_PASSWORD:
         return redirect('/admin/room')
     else:
