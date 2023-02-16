@@ -1,6 +1,6 @@
 # About
 
-This is a simple website where people can post their favorite  quotes with the correct category. Admins also can delete the quotes in the database from the website.
+This is a simple website where people can post their favorite  quotes with the correct category. Admins also can delete the quotes in the database from the website. Made with Python(Flask) and JavaScript for the backend and HTML & CSS for the frontend.
 
 Author: [CCXLV](https://github.com/CCXLV)
 
