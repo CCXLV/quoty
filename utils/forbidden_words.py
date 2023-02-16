@@ -1,5 +1,5 @@
 
 FORBIDDEN_WORDS = [
-    'fuck',
+    'fuck', 'bitch',
 ]
 
