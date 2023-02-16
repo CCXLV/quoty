@@ -3,16 +3,24 @@
 
 {% block body %}
 
-    <a href="/quotes">
-        <h1 id="title">Quotes</h1>
-    </a>
+    <div class="nav-bar">
+        <a href="/quotes">
+            <h1 id="title">Quotes</h1>
+        </a>
+    </div>
     <div class="post">
         <form action="" method="post">
             <h3 id="nickname">Enter quote author</h3>
-            <input type="text" name="nickname" placeholder="Author name" required id="inp-nickname">
+            <input type="text" name="author" placeholder="Author name" required id="inp-nickname">
             <p id="question">What is your favorite quote?</p>
             <textarea name="post-content" id="post" required></textarea>
             <button type="submit" id="submit-button">Submit</button>
+            <select name="category" id="categories">
+                <option selected>Other</option>
+                {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
         </form>
     </div>
 
