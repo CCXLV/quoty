@@ -1,2 +1,1 @@
-## Note 
-Be aware that there are some harmful words in `forbidden_words.py`.
+## You can put words in `forbidden_words.py` which will be forbidden to post
