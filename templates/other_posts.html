@@ -1,5 +1,5 @@
 {% extends 'layout/layout.html' %}
-{% block title %}Quotes{% endblock %}
+{% block title %}Other quotes{% endblock %}
 
 {% block body %}
 
@@ -12,7 +12,7 @@
             <li><a href="/quotes/inspirational" id="cat-bar">Inspirational</a></li>
             <li><a href="/quotes/wise" id="cat-bar">Wise</a></li>
             <li><a href="/quotes/movie" id="cat-bar">Movie</a></li>
-            <li><a href="/quotes/other" id="cat-bar">Other</a></li>
+            <li><a href="/quotes/other" id="cat-bar-clicked">Other</a></li>
         </nav>
         <a href="/">
             <button id="post-quote">
@@ -30,5 +30,6 @@
             </div>
         {% endfor %}
     </div>
+
 
 {% endblock %}

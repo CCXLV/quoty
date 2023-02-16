@@ -1,5 +1,5 @@
 from cs50 import SQL
-from flask import Flask, render_template, request, session, jsonify, redirect, url_for
+from flask import Flask, jsonify, redirect, render_template, request
 from datetime import datetime
 
 from utils.forbidden_words import FORBIDDEN_WORDS
@@ -11,31 +11,59 @@ app.config['SECRET_KEY'] = config.SECRET_KEY
 db = SQL(config.MySQL_URL)
 
 
+CATEGORIES = [
+    'Motivational', 
+    'Inspirational',
+    'Wise',
+    'Movie',
+    'Other'
+]
+categories = [
+    'Motivational', 
+    'Inspirational',
+    'Wise',
+    'Movie'
+]
+
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        nickname = request.form.get('nickname')
+        author = request.form.get('author')
         post_content = request.form.get('post-content')
-        session['nickname'] = nickname
-        session['post-content'] = post_content
+        category = request.form.get('category')
 
         error_message = 'It is highly forbidden using nsfw words!'
         found = False
+        if category not in CATEGORIES:
+            return render_template('error.html', error='Choose correct category.')
+
         for word in FORBIDDEN_WORDS:
-            if word in post_content or word in nickname:
+            if word in post_content or word in author:
                 found = True
                 break
         if found:
             return render_template('error.html', error=error_message)
         else:
             query_ = (
-                'INSERT INTO posts (author, content, upload_date) VALUES (?, ?, ?)'
+                'INSERT INTO posts (author, content, upload_date, category) VALUES (?, ?, ?, ?)'
             )
-            db.execute(query_, author, post_content, datetime.now())
-        
-
+            db.execute(query_, author, post_content, datetime.now(), category)
     
-    return render_template('index.html')
+    return render_template('index.html', categories=categories)
+
+
+@app.route('/error')
+def error():
+    return render_template('error.html')
+
+@app.route('/api/quotes', methods=['GET', 'POST'])
+def api_quotes():
+    result = db.execute('SELECT * FROM posts')
+
+
+    return jsonify(result)
+
 
 
 @app.route('/quotes', methods=['GET', 'POST'])
@@ -47,12 +75,50 @@ def posts():
 
     return render_template('posts.html', posts=results)
 
+@app.route('/quotes/motivational', methods=['GET', 'POST'])
+def motivational():
+    result = db.execute('SELECT * FROM posts WHERE category = ?', 'Motivational')
+    results = []
+    for i in result:
+        results.append(i)
 
-@app.route('/api/quotes', methods=['GET', 'POST'])
-def api_quotes():
-    result = db.execute('SELECT * FROM posts')
+    return render_template('motivational_posts.html', posts=results)
 
-    return jsonify(result)
+@app.route('/quotes/inspirational', methods=['GET', 'POST'])
+def inspirational():
+    result = db.execute('SELECT * FROM posts WHERE category = ?', 'Inspirational')
+    results = []
+    for i in result:
+        results.append(i)
+
+    return render_template('inspirational_posts.html', posts=results)
+
+@app.route('/quotes/wise', methods=['GET', 'POST'])
+def wise():
+    result = db.execute('SELECT * FROM posts WHERE category = ?', 'Wise')
+    results = []
+    for i in result:
+        results.append(i)
+
+    return render_template('wise_posts.html', posts=results)
+
+@app.route('/quotes/movie', methods=['GET', 'POST'])
+def movie():
+    result = db.execute('SELECT * FROM posts WHERE category = ?', 'Movie')
+    results = []
+    for i in result:
+        results.append(i)
+
+    return render_template('movie_posts.html', posts=results)
+
+@app.route('/quotes/other', methods=['GET', 'POST'])
+def other():
+    result = db.execute('SELECT * FROM posts WHERE category = ?', 'Other')
+    results = []
+    for i in result:
+        results.append(i)
+
+    return render_template('other_posts.html', posts=results)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
@@ -64,14 +130,14 @@ def admin():
 @app.route('/admin/verify-passcode', methods=['POST'])
 def verify_passcode():
     message = 'Acces denied!'
-    passcode = request.form.get('passcode')
+    passcode = request.json.get('passcode')
     if passcode == config.ADMIN_PASSWORD:
-        return redirect('/admin/room/IC12S8AfOfPLmaX8rSso7pL6')
+        return redirect('/admin/room')
     else:
         return render_template('error.html', error=message)
 
-    
-@app.route('/admin/room/IC12S8AfOfPLmaX8rSso7pL6', methods=['POST'])
+
+@app.route('/admin/room/IC12S8AfOfPLmaX8rSso7pL6', methods=['GET', 'POST'])
 def admin_room():
     result = db.execute('SELECT * FROM posts')
     results = []

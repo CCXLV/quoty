@@ -19,13 +19,30 @@ input{
 button{
     cursor: pointer;
 }
+nav{
+    text-align: center;
+}
+li{
+    display: inline;
+    margin-right: 40px;
+}
+.nav-bar{
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    height: 60px;
+    width: 100%;
+    background-color: var(--main-color);
+    text-align: center;
+}
 #title{
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    top: 30px;
+    top: -15px;
     position: relative;
-    color: var(--title-color);
+    font-size: 30px;
+    color: rgb(231, 231, 231);
 }
 .post{
     width: 900px;
@@ -78,7 +95,7 @@ button{
     top: 30px;
     border-radius: 8px;
     border: 1px solid var(--input-border-color);
-    width: 770px;
+    width: 772px;
     height: 330px;
     font-size: 16px;
     padding-left: 2px;
@@ -88,11 +105,12 @@ button{
     left: 0;
     right: 0;
     position: fixed;
-    margin: 330px auto;
+    margin: 255px auto;
     resize: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 #submit-button{
-    top: 380px;
+    top: 430px;
     left: 61px;
     position: relative;
     width: 70px;
@@ -106,7 +124,19 @@ button{
 #submit-button:hover{
     background-color: rgb(175, 166, 166);
 }
-
+#categories{
+    top: 380px;
+    left: -14px;
+    position: relative;
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    border: 1px solid var(--input-border-color);
+    border-radius: 6px;
+    color: var(--title-color);
+    background-color: white;
+    outline: none;
+}
 
 @media (max-width: 1200px){
 
@@ -131,6 +161,9 @@ button{
     #submit-button{
         left: 17px;
     }
+    #categories{
+        left: -58px;
+    }
 
 }
 @media (max-width: 650px){
@@ -149,14 +182,20 @@ button{
     #submit-button{
         left: 31px;
     }
+    #categories{
+        left: -44px;
+    }
+    li{
+        margin-right: 20px;
+    }
 }
 @media (max-width: 578px){
     .post{
         width: 500px;
     }
     #post{
-        margin: 290px auto;
-        width: 445px;
+        margin: 220px auto;
+        width: 449px;
     }
     #nickname{
         top: -30px;
@@ -177,7 +216,14 @@ button{
     }
     #submit-button{
         left: 22px;
+        top: 400px;
+    }
+    #categories{
         top: 350px;
+        left: -52px;
+    }
+    li{
+        margin-right: 17px;
     }
 }
 @media (max-width: 450px){
@@ -239,7 +285,7 @@ button{
     left: 0;
     right: 0;
     position: relative;
-    margin: 80px auto;
+    margin: 150px auto;
 }
 .post-content{
     width: 670px;
@@ -247,7 +293,7 @@ button{
     font-size: 16px;
     position: relative;
 }
-#date{
+#date-cat{
     font-size: 13px;
 }
 ::-webkit-scrollbar {
@@ -260,9 +306,6 @@ button{
   
   
 @media (max-width: 700px){
-    body{
-        overflow-y: scroll;
-    }
     .post-div{
         width: 650px;
         padding: 0 15px 15px;
@@ -343,4 +386,43 @@ button{
 }
 #admin-input{
     padding: 4px 4px;
+}
+.categories{
+    width: 100%;
+    height: 50px;
+    left: 0;
+    right: 0;
+    position: relative;
+    margin: 30px auto;
+    align-items: center;
+    display: inline-block;
+}
+.nav-categories{
+    height: 25px;
+    width: 100%;
+    top: 60px;
+    position: absolute;
+    background-color: rgb(231, 231, 231);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+#cat-bar{
+    color: #03549a;
+}
+#cat-bar:hover, #cat-bar-clicked:hover{
+    color: #0e82e9;
+}
+#post-quote{
+    top: 12px;
+    right: 30px;
+    position: absolute;
+    border-radius: 6px;
+    border: none;
+    color: #03549a;
+    padding: 7px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+#cat-bar-clicked{
+    color: #04437a;
 }
