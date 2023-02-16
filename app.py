@@ -2,20 +2,13 @@ from cs50 import SQL
 from flask import Flask, render_template, request, session, jsonify, redirect, url_for
 from datetime import datetime
 
-from dotenv import load_dotenv
-
 from utils.forbidden_words import FORBIDDEN_WORDS
-
-load_dotenv('secrets.env')
-
-SECRET_KEY = os.getenv("SECRET_KEY")
-DATABASE_URL = os.getenv("MySQL_URL")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+import config
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = config.SECRET_KEY
 
-db = SQL(DATABASE_URL) # Format 'mysql://root@localhost/test'
+db = SQL(config.MySQL_URL)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -72,7 +65,7 @@ def admin():
 def verify_passcode():
     message = 'Acces denied!'
     passcode = request.form.get('passcode')
-    if passcode == ADMIN_PASSWORD:
+    if passcode == config.ADMIN_PASSWORD:
         return redirect('/admin/room/IC12S8AfOfPLmaX8rSso7pL6')
     else:
         return render_template('error.html', error=message)
