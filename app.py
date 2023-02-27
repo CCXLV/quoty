@@ -64,8 +64,6 @@ def api_quotes():
 
     return jsonify(result)
 
-
-
 @app.route('/quotes', methods=['GET', 'POST'])
 def posts():
     result = db.execute('SELECT * FROM posts')
