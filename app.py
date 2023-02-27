@@ -80,7 +80,7 @@ def get_data(category):
     data = []
     for result in results:
         p = {
-            'id': result['id'], 'author': result['author'], 'content': result['content'], 'date': result['created_at']
+            'id': result['id'], 'author': result['author'], 'content': result['content'], 'date': result['created_at'], 'category': result['category']
         }
         data.append(p)
 
