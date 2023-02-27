@@ -73,18 +73,12 @@ def posts():
 
     return render_template('posts.html', posts=results)
 
-@app.route('/get_data/<category>')
-def get_data(category):
+@app.route('/quotes/<category>')
+def postss(category):
     results = db.execute('SELECT * FROM posts WHERE category = ?', str(category))
- 
-    data = []
-    for result in results:
-        p = {
-            'id': result['id'], 'author': result['author'], 'content': result['content'], 'date': result['created_at'], 'category': result['category']
-        }
-        data.append(p)
 
-    return jsonify(data)
+    return render_template('posts.html', posts=results)
+
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
