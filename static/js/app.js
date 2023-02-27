@@ -20,3 +20,25 @@ buttons.forEach(function(button) {
     }
   });
 });
+
+
+// Categories for posts
+
+const motivationalButton = document.getElementById("motivational-button");
+motivationalButton.addEventListener("click", function() {
+  
+  fetch('/get_data/motivational')
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("post-div");
+    document.body.appendChild(newDiv);
+    .then(response => response.json())
+    .then(data => {
+      for (const row of data) {
+        const newwDiv = document.createElement("div");
+        newwDiv.classList.add("post-content");
+        newwDiv.innerHTML += `<p>Author: ${row.author}</p>`
+        newwDiv.innerHTML += `<p>- ${row.content}</p>`
+        newwDiv.innerHTML += `< p id="date-cat">${row.category} - ${row.date.strftime('%B %d, %Y %I:%M %p')}</p>`
+      }
+
+      document.body.appendChild(newwDiv);
