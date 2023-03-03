@@ -76,7 +76,13 @@ def posts():
 @app.route('/quotes/<category>')
 def postss(category):
     results = db.execute('SELECT * FROM posts WHERE category = ?', str(category))
-
+    
+    categories = []
+    for i in CATEGORIES:
+        categories.append(i.lower())
+    if category not in categories:
+        return render_template('error.html', error=f'{category} doesn\'t exist in the categories list.')
+    
     return render_template('posts.html', posts=results)
 
 
